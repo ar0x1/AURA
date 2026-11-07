@@ -1,0 +1,8 @@
+{
+  "name": "AURA",
+  "description": "AURA Free AI companion featuring Live2D anime animations, AURA voice TTS, custom personas, and conversation memory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,539 @@
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MJCT26J1BK"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MJCT26J1BK'); </script>
+
+    <!-- Core Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- SEO -->
+    <title>AURA Free AI Companion with Live2D & Voice</title>
+    <meta name="description" content="Chat with AURA, your free AI companion by ar0x. Free and open-source — Live2D animations and No login required.">
+    <meta name="keywords" content="AURA, AURA AI, AI companion, waifu AI, free AI girlfriend, Live2D chatbot, open source AI waifu, AI waifu chat, character AI alternative, anime AI companion, AURA TTS">
+    <meta name="author" content="ar0x">
+    <link rel="canonical" href="https://itsaura.ai.studio/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itsaura.ai.studio/">
+    <meta property="og:title" content="AURA Free AI Companion with Live2D & Voice">
+    <meta property="og:description" content="AURA: Open-source AI companion with Live2D animations, AURA voice synthesis, memory. Free to use.">
+    <meta property="og:image" content="https://waifuai.com/favicon.png">
+    <meta property="og:site_name" content="AURA">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AURA",
+      "url": "https://itsaura.ai.studio/",
+      "description": "Free open-source AI companion featuring Live2D animations, AURA Voice synthesis, conversation memory. Powered by AURA ENGINE Brain.",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "ar0x",
+        "url": "https://itsaura.ai.studio/"
+      }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Live2D & App Scripts (unchanged) -->
+    <script src="live2dcubismcore.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@5.3.3/dist/pixi.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/chat.css">
+    <link rel="stylesheet" href="styles/PromptBar.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link rel="stylesheet" href="styles/overlays.css">
+    <link rel="stylesheet" href="styles/debug.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/landing.css">
+  </head>
+  <body>
+    <!-- Anime Styled Landing Overlay -->
+    <div id="landingOverlay" class="landing-overlay hidden">
+      <div id="landingSakuraContainer" class="landing-sakura-container"></div>
+      <button id="landingSkipBtn" class="landing-skip-btn" type="button" aria-label="Enter App">
+        <span>Enter App</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+
+      <div class="landing-content">
+        <!-- Hero Section -->
+        <div class="landing-hero">
+          <div class="landing-title-wrap">
+            <h1 class="landing-title">AURA</h1>
+            <span class="landing-title-sub">Virtual Live2D Companion</span>
+          </div>
+
+          <div class="landing-hero-card">
+            <div class="hero-frame-corner top-left"></div>
+            <div class="hero-frame-corner top-right"></div>
+            <div class="hero-frame-corner bottom-left"></div>
+            <div class="hero-frame-corner bottom-right"></div>
+            <img src="assets/hiyori.png" alt="Live2D Waifu Companion" class="landing-hero-img" />
+          </div>
+
+          <div class="landing-action-row">
+            <button id="landingEnterBtn" class="landing-enter-btn" type="button">
+              <span>ENTER AURA</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Character Roster Section -->
+        <div class="landing-section">
+          <div class="landing-section-header">
+            <h2 class="landing-section-title">Choose Your Companion</h2>
+          </div>
+
+          <div class="landing-roster-grid">
+            <div class="landing-character-card" data-character="Elara">
+              <img src="assets/haru.png" alt="Elara" class="landing-character-avatar" />
+              <div class="landing-character-name">Elara</div>
+            </div>
+
+            <div class="landing-character-card" data-character="Vyra">
+              <img src="assets/hiyori.png" alt="Vyra" class="landing-character-avatar" />
+              <div class="landing-character-name">Vyra</div>
+            </div>
+
+            <div class="landing-character-card" data-character="Kuro">
+              <img src="assets/mao.png" alt="Kuro" class="landing-character-avatar" />
+              <div class="landing-character-name">Kuro</div>
+            </div>
+
+            <div class="landing-character-card" data-character="Nyx">
+              <img src="assets/senko.png" alt="Nyx" class="landing-character-avatar" />
+              <div class="landing-character-name">Nyx</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features Grid Section -->
+        <div class="landing-features-grid">
+          <div class="landing-feature-card">
+            <div class="landing-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h3 class="landing-feature-title">Intelligent Chat</h3>
+          </div>
+
+          <div class="landing-feature-card">
+            <div class="landing-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+            </div>
+            <h3 class="landing-feature-title">Live2D Expression</h3>
+          </div>
+
+          <div class="landing-feature-card">
+            <div class="landing-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="landing-feature-title">Free & Open</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <noscript>
+      <div style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+        <h1>AURA Free AI Companion</h1>
+        <p>
+          AURA is a free, open-source AI companion web app featuring real-time
+          Live2D animated characters, high-quality voice synthesis via AURA TTS,
+          conversation memory. No account or login required.
+        </p>
+        <h2>Features</h2>
+        <ul>
+          <li>Live2D animated waifu characters with emotion expressions</li>
+          <li>Voice synthesis using xAI Grok Voice (Eve) via Puter.js AI API</li>
+          <li>Powered by NVIDIA Nemotron AI Brain — high performance conversational intelligence</li>
+          <li>Conversation memory and rolling chat summaries</li>
+          <li>Custom persona system prompts — build any character you want</li>
+          <li>Ambient mode — AI speaks unprompted during silence</li>
+          <li>Multi-language support across 50+ languages</li>
+          <li>Fully client-side — no backend, no data collection</li>
+          <li>500+ users across 51 countries</li>
+          <li>100% free and open-source (MIT-0 license)</li>
+        </ul>
+        <h2>What is an AI Companion?</h2>
+        <p>
+          An AI companion is a conversational AI that simulates a personal relationship —
+          offering emotional support, entertainment, and interactive roleplay. AURA
+          is a free alternative to Character.AI, Replika, and similar platforms, with full
+          user control and no subscription required.
+        </p>
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/ar0x1/AURA/">GitHub (open source)</a></li>
+        </ul>
+      </div>
+    </noscript>
+    <button class="fullscreen-button" id="fullscreenBtn" aria-label="Full Screen Mode" title="Full Screen Mode" onclick="toggleFullScreen()">
+      <svg class="fullscreen-enter-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 3 21 3 21 9"></polyline>
+        <polyline points="9 21 3 21 3 15"></polyline>
+        <polyline points="21 15 21 21 15 21"></polyline>
+        <polyline points="3 9 3 3 9 3"></polyline>
+      </svg>
+      <svg class="fullscreen-exit-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+        <polyline points="4 14 10 14 10 20"></polyline>
+        <polyline points="20 10 14 10 14 4"></polyline>
+        <polyline points="14 20 14 14 20 14"></polyline>
+        <polyline points="10 4 10 10 4 10"></polyline>
+      </svg>
+    </button>
+    <button class="settings-button" aria-label="Settings">
+      <svg width="26" height="26" viewBox="0 0 128 128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Settings">
+        <path stroke-width="10" d="M64 12v9 M64 107v9 M12 64h9 M107 64h9 M27.2 27.2l6.4 6.4 M94.4 94.4l6.4 6.4 M100.8 27.2l-6.4 6.4 M33.6 94.4l-6.4 6.4"/>
+        <circle cx="64" cy="64" r="43" stroke-width="10"/>
+        <circle cx="64" cy="64" r="17" stroke-width="8"/>
+        <path stroke-width="7" d="M64 31v8 M64 89v8 M31 64h8 M89 64h8 M40.7 40.7l5.7 5.7 M81.6 81.6l5.7 5.7 M87.3 40.7l-5.7 5.7 M46.4 81.6l-5.7 5.7"/>
+      </svg>
+    </button>
+
+    <div class="settings-panel" id="settingsPanel">
+      <div class="settings-search-container">
+        <input type="text" id="settingsSearch" class="settings-search-input" placeholder="Search settings..." data-ui-key="searchSettingsPlaceholder">
+        <span class="search-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </span>
+      </div>
+      <div id="settingsSearchResults" class="settings-search-results" style="display: none;"></div>
+      <div id="settingsMainMenu" class="settings-main-menu">
+
+        <div class="settings-category-label">Models & Visuals</div>
+        <div class="settings-menu-item" data-action="open-submenu" data-submenu="group-model" role="button" tabindex="0" aria-label="Model Settings">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </span>
+          <span data-ui-key="modelSettingsTitle">Model Settings</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+        <div class="settings-category-label">Voice & Audio</div>
+        <div class="settings-menu-item" data-action="open-submenu" data-submenu="group-audio" role="button" tabindex="0" aria-label="Voice & Audio Settings">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+          </span>
+          <span>Voice & Audio</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+        <div class="settings-category-label">System</div>
+        <div class="settings-menu-item" data-action="open-submenu" data-submenu="group-preferences" role="button" tabindex="0">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l-.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06-.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </span>
+          <span data-ui-key="preferencesTitle">Preferences</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+
+
+        <div class="settings-menu-item" data-action="open-submenu" data-submenu="group-help" role="button" tabindex="0">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </span>
+          <span data-ui-key="helpTutorialTitle">Help & Tutorial</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </div>
+
+
+
+
+
+      <div id="group-model" class="settings-submenu">
+        <div class="submenu-header">
+          <button class="back-button" type="button" data-action="close-submenu" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <h3 data-ui-key="modelSettingsTitle">Live2D Characters</h3>
+        </div>
+
+        <!-- Featured Gallery Hero Card -->
+        <div class="model-gallery-hero-card">
+          <div class="hero-card-content">
+            <div class="hero-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <div class="hero-card-text">
+              <h4>Character Gallery</h4>
+            </div>
+          </div>
+          <button id="openModelGalleryBtn" class="model-gallery-open-btn" data-ui-key="openModelGalleryBtn">
+            Browse Character Gallery
+          </button>
+        </div>
+
+        <div class="settings-item">
+          <button id="resetModelPositionBtn" class="model-action-btn" data-ui-key="resetModelPositionBtn">
+            Reset Character Position & Scale
+          </button>
+        </div>
+      </div>
+
+
+
+
+
+      <div id="group-audio" class="settings-submenu">
+        <div class="submenu-header">
+          <button class="back-button" type="button" data-action="close-submenu" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <h3>Voice & Audio</h3>
+        </div>
+
+        <div class="settings-item">
+          <label>
+            <input type="checkbox" id="enableVoiceCheckbox" checked />
+            Enable Voice Speech (TTS)
+          </label>
+          <div class="value-display">
+            Speaks Vyra's responses aloud with natural anime-girl intonation and real-time mouth movement.
+          </div>
+        </div>
+
+        <div class="settings-item">
+          <label>Test AURA Voice</label>
+          <div style="display: flex; gap: 8px; margin-top: 6px;">
+            <button id="previewVyraVoiceBtn" class="model-action-btn" type="button" style="width: 100%;">
+              🔊 Test AURA Voice
+            </button>
+          </div>
+          <div class="value-display" id="ttsPreviewStatus">Test Vyra's sweet, expressive voice powered by AURA TTS.</div>
+        </div>
+
+        <div class="settings-item">
+          <label for="ttsVolumeSlider">Voice Volume</label>
+          <input type="range" id="ttsVolumeSlider" min="0" max="1" step="0.05" value="1" />
+          <div class="value-display">Current volume: <span id="ttsVolumeValue">1.00</span></div>
+        </div>
+
+
+      </div>
+
+      <div id="group-preferences" class="settings-submenu">
+        <div class="submenu-header">
+          <button class="back-button" type="button" data-action="close-submenu" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <h3 data-ui-key="preferencesTitle">Preferences</h3>
+        </div>
+        <div class="settings-item">
+          <label data-ui-key="multipleModelsLabel">
+            <input type="checkbox" id="multipleModelsCheckbox" />
+            Load multiple models at once
+          </label>
+          <div class="value-display" data-ui-desc="multipleModelsDesc">When enabled, selecting a model adds it without removing existing ones.</div>
+        </div>
+      </div>
+
+
+
+      <div id="group-help" class="settings-submenu">
+        <div class="submenu-header">
+          <button class="back-button" type="button" data-action="close-submenu" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+          <h3 data-ui-key="helpTutorialTitle">Help & Tutorial</h3>
+        </div>
+        <div id="settingsTutorialContent" class="settings-tutorial-content">
+          <div class="settings-item" style="margin-bottom: 12px;">
+            <button type="button" onclick="if(window.openLandingPage) window.openLandingPage();" class="settings-action-btn" style="width: 100%;">
+              Show Hero Intro & Companion Overview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nowtime">
+      <p id="time"></p>
+    </div>
+
+    <!-- Model Selector -->
+    <div id="modelSelectorContainer_old" class="model-selector-container" style="display: none;">
+      <!-- Moved to settings panel -->
+    </div>
+
+    <!-- Language & Display Settings Container -->
+    <div id="languageDisplaySettingsContainer" class="language-display-settings-container" style="display: none;">
+      <!-- Moved to settings panel -->
+    </div>
+
+    <div id="chatSidebar" class="chat-sidebar">
+      <div class="chat-sidebar-header">
+        <span>Chat History</span>
+        <div class="chat-sidebar-header-actions">
+          <button class="chat-sidebar-action-btn" type="button" data-action="export-all-chats" title="Export All Chats">⬇</button>
+          <button class="chat-sidebar-close" type="button" data-action="toggle-chat-sidebar">✕</button>
+        </div>
+      </div>
+      <div id="chatList" class="chat-list"></div>
+    </div>
+
+    <div id="promptBarContainer" class="prompt-bar-container">
+      <div class="prompt-bar-top-controls">
+        <button id="chatSidebarToggle" class="chat-sidebar-toggle prompt-bar-btn" type="button" data-action="toggle-chat-sidebar" title="Chat History">📚 Chats</button>
+        <button id="promptHistoryToggle" class="prompt-bar-history-toggle" type="button">
+          <span>💬 Conversation</span>
+          <span id="promptHistoryChevron">▼</span>
+        </button>
+        <button class="chat-header-btn new-chat-btn prompt-bar-btn" type="button" data-action="new-chat" title="New Chat">＋ New</button>
+      </div>
+
+      <div id="promptBarHistory" class="prompt-bar-history">
+        <div class="chat-history" id="chatHistory"></div>
+        <div class="typing-indicator" id="typingIndicator"></div>
+        <div class="chat-input-status-bar" id="queueStatusContainer" style="display: none;">
+          <div class="queue-info">
+            <span id="queueLengthText">Queued: 0</span>
+            <div id="queuedMessagesList" class="queued-messages-list"></div>
+          </div>
+          <button id="clearQueueChatBtn" class="clear-queue-chat-btn" type="button" data-action="clear-queue">Clear</button>
+        </div>
+      </div>
+
+      <div class="prompt-bar" id="promptBarRoot">
+        <div class="prompt-bar__field" id="promptBarField">
+          <canvas class="prompt-bar__sparks" id="promptSparksCanvas"></canvas>
+          <textarea
+            id="messageInput"
+            class="prompt-bar__input"
+            rows="1"
+            placeholder="Type a message to Haru... (Press Enter to talk)"
+            autocomplete="off"
+          ></textarea>
+          <button type="button" class="prompt-bar__send" id="sendMessageBtn" disabled aria-label="Send">
+            <svg class="prompt-bar__glyph" id="promptSendGlyph" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+              <path id="promptGlyphPath" d="M12.00 4.50 L18.50 11.00 L14.25 11.00 L14.25 19.50 L9.75 19.50 L9.75 11.00 L5.50 11.00Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="debug-panel" id="debugPanel">
+      <div class="debug-header" id="debugHeader">
+        <span class="debug-header-title">🧰 Debug Panel</span>
+        <div class="debug-header-buttons">
+          <button class="debug-header-btn" type="button" data-action="clear-debug-log" title="Clear debug log">🧹</button>
+          <button class="debug-header-btn" type="button" data-action="copy-debug-log" title="Copy debug log to clipboard">📋</button>
+          <button class="debug-header-btn debug-close-btn" type="button" data-action="toggle-debugger" title="Close debug panel">✕</button>
+        </div>
+      </div>
+      <div class="debug-content">
+        <div id="debugLog"></div>
+      </div>
+    </div>
+
+
+
+    <div id="bgViewerOverlay" class="bg-viewer-overlay" aria-hidden="true">
+      <button class="bg-viewer-close" id="bgViewerCloseBtn" aria-label="Close">×</button>
+      <button class="bg-viewer-nav prev" id="bgViewerPrevBtn" aria-label="Previous">‹</button>
+      <img id="bgViewerImage" alt="Background preview">
+      <button class="bg-viewer-nav next" id="bgViewerNextBtn" aria-label="Next">›</button>
+      <div id="bgViewerCounter" class="bg-viewer-counter"></div>
+    </div>
+    <div id="dotFieldContainer" class="dot-field-container">
+      <canvas id="dotFieldCanvas"></canvas>
+      <svg id="dotFieldSvg" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
+        <defs>
+          <radialGradient id="dotFieldGlowGrad">
+            <stop offset="0%" stop-color="#120F17" />
+            <stop offset="100%" stop-color="transparent" />
+          </radialGradient>
+        </defs>
+        <circle id="dotFieldGlow" cx="-9999" cy="-9999" r="160" fill="url(#dotFieldGlowGrad)" style="opacity: 0; will-change: opacity;" />
+      </svg>
+    </div>
+    <div id="bgLayer" class="bg-layer"></div>
+
+
+    <div id="modelGalleryOverlay" class="model-gallery-overlay" aria-hidden="true">
+      <div class="model-gallery-modal" id="modelGalleryModal">
+        <div class="model-gallery-header">
+          <div class="model-gallery-tabs" id="modelGalleryTabs">
+            <button class="gallery-tab active" data-filter="anime" type="button">Live models</button>
+            <button class="gallery-tab" data-filter="azur" type="button">Azur Lane <span class="tab-lock-badge" id="azurTabLock">🔒</span></button>
+            <button class="gallery-tab" data-filter="mommys" type="button">🤤 🍽️ <span class="tab-lock-badge" id="mommysTabLock">🔒</span></button>
+          </div>
+          <button class="model-gallery-close" id="modelGalleryCloseBtn" aria-label="Close">✕</button>
+        </div>
+
+        <div class="model-gallery-grid-container">
+          <div class="model-gallery-grid" id="modelGalleryGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passcode Unlock Modal for Restricted Sections -->
+    <div id="passcodeUnlockModal" class="passcode-modal-overlay" aria-hidden="true">
+      <div class="passcode-modal">
+        <div class="passcode-modal-header">
+          <span class="passcode-modal-icon">🔒</span>
+          <h3>Restricted Section</h3>
+          <p>Enter the access code to unlock the Azur Lane and Mommy character sections.</p>
+        </div>
+        <form id="passcodeUnlockForm" class="passcode-modal-form" onsubmit="return false;">
+          <div class="passcode-input-wrapper">
+            <input type="password" id="passcodeCodeInput" class="passcode-input" placeholder="Enter access code..." autocomplete="off" spellcheck="false" />
+            <button type="button" id="passcodeToggleVisBtn" class="passcode-toggle-vis" title="Toggle visibility">👁️</button>
+          </div>
+          <div id="passcodeErrorMsg" class="passcode-error-msg"></div>
+          <div class="passcode-modal-actions">
+            <button type="button" id="passcodeCancelBtn" class="passcode-btn secondary">Cancel</button>
+            <button type="submit" id="passcodeSubmitBtn" class="passcode-btn primary">Unlock Section</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="scripts/model_priority.js"></script>
+    <script src="scripts/ui_strings.js"></script>
+    <script src="scripts/ui_translator.js"></script>
+    <script src="scripts/global_state.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/llm_provider_base.js"></script>
+    <script src="scripts/openrouter.js"></script>
+    <!-- Language data -->
+    <script src="scripts/languages_full_data.js"></script>
+    <script src="scripts/language_data_manager.js"></script>
+    <script src="scripts/language_config.js"></script>
+    <script src="scripts/model_config.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/debug.js"></script>
+    <script src="scripts/dot_field.js"></script>
+    <script src="scripts/particle_system.js"></script>
+    <script src="scripts/animation_controller.js"></script>
+    <script src="scripts/interaction_handlers.js"></script>
+    <script src="scripts/model_controls.js"></script>
+    <script src="scripts/live2d_manager.js"></script>
+    <script src="scripts/ai_interface.js"></script>
+    <script src="scripts/ui_manager.js"></script>
+    <script src="scripts/settings_ui.js"></script>
+    <script src="scripts/settings_handlers.js"></script>
+    <script src="scripts/sound_manager.js"></script>
+    <script src="scripts/fish_audio_tts.js"></script>
+    <script src="scripts/chat_manager.js"></script>
+    <script src="scripts/chat_controller.js"></script>
+    <script src="scripts/prompt_bar.js"></script>
+    <script src="scripts/tutorial.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/app_init.js"></script>
+    <script src="scripts/clock.js"></script>
+    <script src="scripts/model_gallery.js"></script>
+    <script src="scripts/landing.js"></script>
+  </body>
+</html>

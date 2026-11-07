@@ -1,0 +1,351 @@
+/* PromptBar & Ultracode Animation Styles */
+.prompt-bar-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.prompt-bar-container > * {
+  pointer-events: auto;
+}
+
+.prompt-bar-top-controls {
+  display: none !important;
+}
+
+.prompt-bar-history {
+  display: none !important;
+}
+
+.chat-sidebar {
+  display: none !important;
+}
+
+.prompt-bar {
+  --pb-bg: #27272a;
+  --pb-ink: #f5f5f5;
+  --pb-w: 540px;
+  --pb-radius: 18px;
+  --pb-press: 0.96;
+  --pb-spark: #b39dff;
+  --pb-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --pb-muted: color-mix(in srgb, var(--pb-ink) 55%, transparent);
+  --pb-hover: color-mix(in srgb, var(--pb-ink) 8%, transparent);
+  position: relative;
+  width: min(var(--pb-w), 92vw);
+  color: var(--pb-ink);
+  font-family: inherit;
+  font-size: 14.5px;
+  line-height: 22px;
+  border-radius: var(--pb-radius);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55), 0 0 24px rgba(179, 157, 255, 0.22);
+  cursor: text;
+  pointer-events: auto;
+}
+
+.prompt-bar__field {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--pb-radius);
+  background: var(--pb-bg);
+  border: 1px solid rgba(179, 157, 255, 0.3);
+  cursor: text;
+  pointer-events: auto;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.prompt-bar__field:focus-within {
+  border-color: rgba(179, 157, 255, 0.7);
+  box-shadow: 0 0 20px rgba(179, 157, 255, 0.25);
+}
+
+.prompt-bar__field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    140% 120% at 0% 100%,
+    rgba(179, 157, 255, 0.28),
+    transparent 65%
+  );
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Ultracode spark particle canvas */
+.prompt-bar__sparks {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.prompt-bar__input {
+  flex: 1;
+  display: block;
+  width: 100%;
+  min-height: 24px;
+  max-height: 120px;
+  padding: 2px 0;
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14.5px;
+  line-height: 22px;
+  resize: none;
+  overflow-wrap: anywhere;
+  cursor: text;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.prompt-bar__input:focus,
+.prompt-bar__input:focus-visible,
+.prompt-bar__input:active {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.prompt-bar__input::placeholder {
+  color: rgba(245, 245, 245, 0.45);
+}
+
+@media (pointer: coarse) {
+  .prompt-bar__input {
+    font-size: 16px;
+  }
+}
+
+.prompt-bar__send {
+  flex: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.5);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 160ms var(--pb-ease-out);
+}
+
+.prompt-bar__send:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.prompt-bar__send[data-armed] {
+  background: #f5f5f5;
+  color: #27272a;
+  cursor: pointer;
+  opacity: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.prompt-bar__send[data-armed]:hover {
+  background: #ffffff;
+  transform: scale(1.05);
+}
+
+.prompt-bar__send[data-pressed] {
+  transform: scale(var(--pb-press));
+}
+
+.prompt-bar__glyph {
+  display: block;
+  width: 17px;
+  height: 17px;
+  transform-origin: 50% 50%;
+}
+
+/* Voice Talk (STT) Button */
+.prompt-bar__mic {
+  flex: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    transform 160ms var(--pb-ease-out),
+    box-shadow 200ms ease;
+}
+
+.prompt-bar__mic:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #73c2fb;
+  transform: scale(1.05);
+}
+
+.prompt-bar__mic:active {
+  transform: scale(var(--pb-press));
+}
+
+.prompt-bar__mic-glyph {
+  display: block;
+  width: 17px;
+  height: 17px;
+  pointer-events: none;
+}
+
+/* Active Voice Recording State */
+.prompt-bar__mic[data-listening] {
+  background: linear-gradient(135deg, #ff5263 0%, #ff7782 100%);
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(255, 82, 99, 0.65), 0 0 26px rgba(255, 119, 130, 0.4);
+  animation: micListeningPulse 1.4s ease-in-out infinite;
+}
+
+.prompt-bar__mic[data-listening]:hover {
+  background: linear-gradient(135deg, #ff384d 0%, #ff6272 100%);
+  transform: scale(1.08);
+}
+
+@keyframes micListeningPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 82, 99, 0.65), 0 0 16px rgba(255, 82, 99, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 82, 99, 0), 0 0 20px rgba(255, 82, 99, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 82, 99, 0), 0 0 16px rgba(255, 82, 99, 0.5);
+  }
+}
+
+/* Live Speech Transcription Badge */
+.voice-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(24, 24, 27, 0.92);
+  border: 1px solid rgba(255, 82, 99, 0.5);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #f4f4f5;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 14px rgba(255, 82, 99, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 6px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.voice-live-badge.hidden {
+  display: none !important;
+}
+
+.voice-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff5263;
+  box-shadow: 0 0 8px #ff5263;
+  animation: voiceDotPulse 1.2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+.voice-live-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 20px);
+}
+
+@keyframes voiceDotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+/* History header / toggle & top controls */
+.prompt-bar-top-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.prompt-bar-btn,
+.prompt-bar-history-toggle {
+  background: rgba(39, 39, 42, 0.85);
+  border: 1px solid rgba(179, 157, 255, 0.3);
+  color: #f5f5f5;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  transition: all 0.2s ease;
+}
+
+.prompt-bar-btn:hover,
+.prompt-bar-history-toggle:hover {
+  background: rgba(50, 50, 54, 0.95);
+  border-color: rgba(179, 157, 255, 0.6);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .prompt-bar-container {
+    bottom: 12px;
+    width: calc(100vw - 20px);
+  }
+  .prompt-bar {
+    width: 100%;
+  }
+}
