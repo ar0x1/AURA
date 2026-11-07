@@ -1,144 +1,249 @@
-# Waifu Companion
+<div align="center">
+  <a href="https://github.com/ar0x1/AURA">
+    <img src="https://raw.githubusercontent.com/ar0x1/AURA/main/favicon.png" alt="AURA logo" width="112" />
+  </a>
 
-![License: MIT-0](https://img.shields.io/badge/License-MIT--0-purple.svg)
+  <h1>AURA</h1>
+  <p><strong>Your personal AI companion, brought to life with Live2D.</strong></p>
+  <p>Real-time conversations · Expressive characters · Natural voice · Personalization</p>
 
-[![Waifu AI Live Demo](https://raw.githubusercontent.com/waifuai/projects-assets/main/assets/demo-portrait.webp)](https://waifuai.com)
+  <p>
+    <a href="https://itsaura.ai.studio/app/">
+      <img src="https://img.shields.io/badge/LAUNCH-AURA%20APP-8B5CF6?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Launch AURA" />
+    </a>
+    <a href="https://itsaura.ai.studio/">
+      <img src="https://img.shields.io/badge/VISIT-WEBSITE-0EA5E9?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Visit website" />
+    </a>
+    <a href="https://github.com/ar0x1/AURA">
+      <img src="https://img.shields.io/badge/VIEW-SOURCE-24292F?style=for-the-badge&logo=github&logoColor=white" alt="View source" />
+    </a>
+    <a href="https://github.com/ar0x1/AURA/issues">
+      <img src="https://img.shields.io/badge/REPORT-ISSUE-EF4444?style=for-the-badge&logo=github&logoColor=white" alt="Report an issue" />
+    </a>
+  </p>
 
-**Waifu Companion** is a fully customizable, browser-based intelligent assistant that brings your favorite characters to life using Live2D technology. It combines interactive visuals with advanced AI capabilities to create a personalized desktop companion experience.
+  <p>
+    <img src="https://img.shields.io/github/stars/ar0x1/AURA?style=flat-square&logo=github&label=Stars" alt="GitHub stars" />
+    <img src="https://img.shields.io/github/forks/ar0x1/AURA?style=flat-square&logo=github&label=Forks" alt="GitHub forks" />
+    <img src="https://img.shields.io/github/license/ar0x1/AURA?style=flat-square&label=License" alt="License" />
+    <img src="https://img.shields.io/badge/Runtime-Node.js%2020%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 20 or newer" />
+  </p>
 
-## Key Features
+  <a href="https://itsaura.ai.studio/">
+    <img src="https://raw.githubusercontent.com/ar0x1/AURA/main/assets/AURA.png" alt="AURA application preview" width="520" />
+  </a>
+</div>
 
-### Advanced AI Integration
-- **OpenRouter Support**: Use custom LLM models via OpenRouter API with up to 2 fallback models
-- **Groq Support**: Ultra-fast inference with Groq's LPU-powered models (e.g., `llama-3.3-70b-versatile`)
-- **Streaming Responses**: Real-time text generation for natural conversations with both providers
-- **Smart Fallback**: Automatic model fallback on failures, plus a local heuristic engine when offline
-- **Provider Priority**: Groq > OpenRouter > Local Fallback Engine
+---
 
-### Interactive Live2D Models
-- **Full Cubism SDK Support**: Seamlessly renders standard Live2D Cubism models.
-- **50+ Built-in Models**: Gallery with thumbnails.
-- **Custom Model Loading**: Add your own models by providing a URL to their `.model3.json` file.
-- **Model Gallery**: Fullscreen overlay with thumbnail grid for browsing and switching characters.
-- **Multi-Model Support**: Display interactions between multiple characters simultaneously.
-- **Interactive Animations**: Drag to reposition, zoom, particle effects on click, idle breathing, blinking.
-- **Emotion-Driven Expressions**: AI emotions (happy, sad, surprised, thoughtful, excited) trigger model expressions and motions.
+## Overview
 
-### Smart AI Persona
-- **Customizable Identity**: Define your companion's core personality and roleplay traits via system prompts.
-- **Contextual Memory**: The AI remembers previous interactions with configurable memory depth.
-- **Auto-Summarization**: Automatic conversation summarization to preserve context across long sessions.
-- **Context Awareness**: Aware of real-time context like current time, device battery status, and user-provided background context.
-- **AI Settings Control**: Experimental feature allowing the AI to modify application settings.
+**AURA** is a free, open-source, browser-based AI companion designed to make conversations feel more alive. It combines configurable AI responses with animated **Live2D characters**, expressive text-to-speech, conversation memory, and a customizable interface.
 
-### Voice & Audio
-- **Kokoro TTS**: Local ONNX-based text-to-speech engine (WebGPU/WASM) with 10+ voices across US and UK English.
-- **TikTok TTS**: Free TTS API with 35+ voices across 10+ languages (English, French, German, Spanish, Portuguese, Japanese, Korean, Indonesian) plus character voices (Ghost Face, C3PO, Stitch, Pirate, Narrator).
-- **Browser SpeechSynthesis**: Built-in fallback voice with no rate limits.
-- **Real-Time Lip-Sync**: Mouth animation driven by audio frequency analysis during TTS playback.
-- **TTS Preloading**: Background pre-fetch of next queued message audio for instant playback.
-- **Speech-to-Text (STT)**: Talk to your companion using your microphone via Web Speech API.
-- **Internet Radio**: Integrated music player streaming from [Listen.moe](https://listen.moe/).
-- **Sound Effects**: UI interactions enhanced with subtle sound effects via Tone.js.
+Run it locally with a lightweight Node.js server, connect your preferred AI provider, choose a character, and make the experience your own.
 
-### Chat System
-- **Message Queue**: Queue multiple messages for sequential processing with audio preloading.
-- **Ambient Mode**: AI speaks unprompted after a configurable silence delay with custom prompt.
-- **Typing Indicators**: Visual feedback during AI response generation.
-- **Online/Offline Status**: Clear status indicator with manual reconnect option and configurable offline duration.
-- **Debug Context**: Option to view full chat context sent to the AI in the debug panel.
-- **Conversation Summary Markers**: Visual indicators showing where summarization occurred in chat history.
+## Features
 
-### Visual & UI Customization
-- **Dynamic Backgrounds**:
-  - **AI Generation**: Generate unique backgrounds on the fly using text prompts.
-  - **Custom URLs**: Set any image from the web as your background.
-  - **Background Library**: Save and manage your favorite scenes.
-  - **11 Fit Modes**: Multiple options for how backgrounds fill the screen.
-- **Draggable Interface**: Chat and Debug panels can be moved and resized to fit your layout.
-- **Visual Tweaks**: Adjustable opacity for chatboxes, messages, and backgrounds to blend into your desktop.
-- **Settings Search**: Quickly find any setting with the real-time search feature.
-- **Clock Display**: Optional on-screen clock.
+### AI conversation
+- **OpenRouter integration** with a configurable primary model and up to two model fallbacks.
+- **Streaming responses** for a more responsive chat experience.
+- **Server-side fallback:** the Express server can use NVIDIA Nemotron, then Gemini when configured, before falling back to a local response.
+- **Custom personas:** shape a companion's personality and behavior with editable prompts.
+- **Conversation context:** configurable memory depth and rolling conversation summaries.
+- **Context awareness:** optionally include information such as the current time and device battery status.
 
-### Advanced Settings
-- **100+ Language Support**: UI translation and response language selection with AI-powered translations.
-- **Transliteration**: Optional romanization (romaji) for Japanese and romanized Korean responses.
-- **Debug Tools**: Comprehensive categorized logging for Live2D, AI, TTS, and Network subsystems with copy-to-clipboard.
-- **Offline Mode**: Test interactions with a local fallback engine with configurable auto-activation duration.
-- **15-Step Interactive Tutorial**: Guided tour for new users, translatable to any language.
+### Live2D characters
+- **Live2D Cubism rendering** powered by PIXI.js and `pixi-live2d-display`.
+- **Character gallery** for browsing and switching between available models.
+- **Custom model loading** using a Live2D `.model3.json` URL.
+- **Multiple model support** when enabled.
+- **Interactive character controls:** drag, reposition, and zoom models.
+- **Animated expressions and idle motion**, including emotion-linked facial changes and particle effects.
 
-## Getting Started
+### Voice and audio
+- **AURA TTS:** Fish Audio integration through the local server's protected API proxy.
+- **Expressive speech playback** with sentence chunking and audio preloading.
+- **Live2D lip-sync** driven by audio frequency analysis.
+- **Voice controls** for enabling speech and adjusting playback volume.
 
-### Prerequisites
-- A modern web browser (Chrome, Firefox, Edge, etc.) with WebGL support.
-- An internet connection (for AI responses and initial asset loading).
+### Personalization and controls
+- Customizable backgrounds and a background library.
+- Adjustable chat layout, panel opacity, and display preferences.
+- Multi-language interface and response-language options.
+- Optional ambient conversation and message queue features.
+- Debug panel with categorized application logs.
+- Guided in-app tutorial for getting familiar with the controls.
 
-### Installation / Running Locally
-Since **Waifu Companion** is a client-side web application, it requires no complex backend installation. However, due to browser security policies (CORS) regarding local file access, you must run it through a local web server.
+## Quick Start
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/waifuai/waifu-companion.git
-    cd waifu-companion
-    ```
+### Requirements
 
-2.  **Start a local server**
-    You can use any static file server. Here are a few examples:
+- **Node.js 20 or newer** and npm.
+- A modern browser such as Chrome, Firefox, or Edge.
+- An internet connection for external AI, voice, and model assets.
 
-    *   **Using Python 3:**
-        ```bash
-        python -m http.server 8000
-        ```
-    *   **Using Node.js (http-server):**
-        ```bash
-        npx http-server .
-        ```
-    *   **VS Code Live Server:**
-        Open the project folder in VS Code and click "Go Live" (requires the Live Server extension).
+### 1. Clone the repository
 
-3.  **Open in Browser**
-    Navigate to `http://localhost:8000` (or the port shown by your server).
+```bash
+git clone https://github.com/ar0x1/AURA.git
+cd AURA
+```
 
-## Usage Guide
+### 2. Install dependencies
 
-- **Settings**: Click the gear icon in the top-left to open the comprehensive Settings Panel with categorized submenus.
-- **Chat**: Type in the chat box or click the microphone icon to speak.
-- **Models**: Use the model gallery to browse and switch between 50+ built-in characters, or load custom models via URL.
-- **Voice**: Configure TikTok TTS, Kokoro TTS, or browser voices in Settings > Voice.
-- **Radio**: Toggle the music stream via the radio icon in Settings > Audio section.
-- **Tutorial**: If it's your first time, click "Launch Tutorial" in the Help section to get a guided tour.
-- **Go Online**: Use the "Go Online" button in the chat header to manually reconnect after going offline.
+```bash
+npm install
+```
 
-## LLM Providers
+### 3. Configure environment variables
 
-Waifu Companion supports multiple LLM providers:
+Create a `.env` file in the project root:
 
-| Provider | Setup | Streaming | Free Models |
-|----------|-------|-----------|-------------|
-| **Groq** | API key from [console.groq.com](https://console.groq.com/) | Yes | Yes (rate limited) |
-| **OpenRouter** | API key from [openrouter.ai](https://openrouter.ai/) | Yes | Yes |
-| **Local Fallback** | No setup needed | No | Always free |
+```bash
+touch .env
+```
 
-See [docs/providers.md](docs/providers.md) for detailed configuration.
+Add the provider keys you intend to use:
 
-## Documentation
+```env
+# Server-side AI provider (optional, but recommended for the server fallback)
+NVIDIA_API_KEY=your_nvidia_api_key
 
-- [LLM Providers](docs/providers.md) - OpenRouter and Groq configuration
-- [Voice & Audio](docs/voice.md) - TTS engines, STT, radio, and sound effects
-- [Memory & Context](docs/memory.md) - Conversation memory and summarization
-- [Models & Visuals](docs/models.md) - Live2D model gallery, controls, and particle effects
-- [Settings Panel](docs/settings.md) - Settings menu structure and search
-- [Troubleshooting](docs/troubleshooting.md) - Common issues and debug tools
+# Optional NVIDIA endpoint/model overrides
+# NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1
+# NVIDIA_MODEL=nvidia/nemotron-3.5-lightning-30b-a3b
 
-## Technologies Used
+# Optional Gemini fallback for the server-side chat route
+GEMINI_API_KEY=your_gemini_api_key
 
-*   **[Live2D Cubism Web SDK](https://www.live2d.com/)**: For rendering and animating character models.
-*   **[PIXI.js](https://pixijs.com/)**: Fast 2D rendering engine.
-*   **[ONNX Runtime Web](https://onnxruntime.ai/)**: Local ML inference for Kokoro TTS (WebGPU/WASM).
-*   **[Tone.js](https://tonejs.github.io/)**: Web Audio framework for interactive sounds.
-*   **[Day.js](https://day.js.org/)**: Date and time formatting.
-*   **Vanilla JavaScript (ES6+)**: Core application logic.
+# Fish Audio key enables server-proxied AURA voice generation
+FISH_AUDIO_API_KEY=your_fish_audio_api_key
+
+# Optional Fish Audio model/reference overrides
+# FISH_AUDIO_MODEL=s2.1-pro-free
+# FISH_AUDIO_REFERENCE_ID=your_reference_id
+```
+
+> **Security:** Never commit your `.env` file or paste API keys into a public issue. Make sure `.env` is listed in your `.gitignore` before committing changes.
+
+**Provider notes**
+
+- The app's OpenRouter integration reads its API key and model preferences from browser storage. It supports a primary model and up to two fallback models.
+- `NVIDIA_API_KEY` enables the server-side NVIDIA chat fallback. The current default model is `nvidia/nemotron-3.5-lightning-30b-a3b`.
+- `GEMINI_API_KEY` is optional and is used as a secondary server-side fallback when the NVIDIA request is unavailable.
+- `FISH_AUDIO_API_KEY` is required for the server's Fish Audio TTS endpoint. Without it, Fish Audio requests return an API-key configuration error.
+
+### 4. Start AURA
+
+Development mode:
+
+```bash
+npm run dev
+```
+
+Or start the server normally:
+
+```bash
+npm start
+```
+
+### 5. Open the app
+
+- Landing page: <http://localhost:3000>
+- AURA app: <http://localhost:3000/app/>
+- Server health check: <http://localhost:3000/api/health>
+
+The server currently listens on port **3000**.
+
+## Using AURA
+
+1. Open the app using the local URL or the **Launch AURA App** button above.
+2. Open **Settings** to explore character, voice, language, and display preferences.
+3. Open **Models & Visuals → Character Gallery** to browse available Live2D characters.
+4. Choose **Voice & Audio** to enable speech and adjust the voice volume.
+5. Customize the companion persona and conversation preferences, then start chatting.
+6. Open the debug panel when troubleshooting AI, audio, or model-loading issues.
+
+## AI and Voice Architecture
+
+AURA uses two related paths:
+
+| Component | Provider / behavior | Configuration |
+|---|---|---|
+| Main browser chat | OpenRouter, with a primary model and up to two model fallbacks | OpenRouter key and model preferences are stored in browser storage |
+| Server chat fallback | NVIDIA Nemotron, then Gemini if configured, then a local response | `NVIDIA_API_KEY`, optional `NVIDIA_MODEL`, `NVIDIA_BASE_URL`, and `GEMINI_API_KEY` |
+| Voice generation | Fish Audio through the Express server proxy | `FISH_AUDIO_API_KEY`, optional `FISH_AUDIO_MODEL` and `FISH_AUDIO_REFERENCE_ID` |
+| Character animation | Live2D Cubism rendered with PIXI.js | Select a model in the Character Gallery or provide a custom model URL |
+
+The server exposes a health endpoint at `/api/health`, chat endpoints at `/api/chat` and `/api/chat/stream`, and Fish Audio endpoints at `/api/tts`, `/api/tts/fish`, and `/api/tts/stream`.
+
+## Development Commands
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the Express server for development |
+| `npm start` | Start the Express server |
+| `npm test` | Run the Node.js test suite |
+| `npm run lint` | Run the server JavaScript syntax check |
+
+## Project Structure
+
+```text
+AURA/
+├── app/          # Browser application, scripts, and styles
+├── assets/       # Application artwork and visual assets
+├── test/         # Automated tests
+├── server.js     # Express server and API routes
+├── index.html    # Landing page
+├── package.json  # Dependencies and npm scripts
+├── favicon.png   # Repository/application icon
+├── favicon.ico
+└── LICENSE       # MIT-0 license
+```
+
+## Tech Stack
+
+- **JavaScript (ES modules)** — application and server logic.
+- **Node.js + Express** — local web server and API endpoints.
+- **Live2D Cubism SDK** — character rendering and animation.
+- **PIXI.js + pixi-live2d-display** — 2D rendering layer for Live2D models.
+- **OpenRouter** — configurable browser-side LLM integration.
+- **NVIDIA Nemotron + Google Gemini** — optional server-side chat and fallback providers.
+- **Fish Audio** — voice synthesis integration.
+- **Day.js** — date and time utilities.
+
+## Troubleshooting
+
+### The page does not load
+
+Make sure the server is running and open `http://localhost:3000`. Do not open the HTML files directly with `file://`; use the Node server so API requests and browser security rules work correctly.
+
+### Chat uses a fallback response
+
+Check that your OpenRouter configuration is valid. For the server-side fallback, verify `NVIDIA_API_KEY` and, optionally, `GEMINI_API_KEY` in `.env`, then restart the server.
+
+### AURA voice is unavailable
+
+Check that `FISH_AUDIO_API_KEY` is present in the server environment and restart AURA. You can inspect the TTS configuration status at `http://localhost:3000/api/tts/status`.
+
+### A Live2D model does not appear
+
+Check the browser console and the AURA debug panel. For a custom model, confirm that the `.model3.json` file and all referenced textures, motions, and other model assets are reachable.
+
+## Contributing
+
+Issues and pull requests are welcome. Before opening an issue, include the steps to reproduce the problem and any relevant browser-console or AURA debug messages. **Do not include API keys, tokens, or other secrets.**
+
+- [Open an issue](https://github.com/ar0x1/AURA/issues)
+- [Browse the source code](https://github.com/ar0x1/AURA)
 
 ## License
 
-This project is licensed under the **MIT No Attribution** license. See the [LICENSE](LICENSE) file for details.
+AURA is released under the **MIT No Attribution (MIT-0)** license. See [`LICENSE`](LICENSE) for the full license text.
+
+---
+
+<div align="center">
+  <p>Built with care by <a href="https://github.com/ar0x1">ar0x</a>.</p>
+  <p><a href="https://itsaura.ai.studio/app/">Launch AURA</a> · <a href="https://github.com/ar0x1/AURA">GitHub</a> · <a href="https://github.com/ar0x1/AURA/issues">Issues</a></p>
+</div>
