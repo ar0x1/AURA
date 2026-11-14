@@ -1,249 +1,196 @@
 <div align="center">
-  <a href="https://github.com/ar0x1/AURA">
-    <img src="https://raw.githubusercontent.com/ar0x1/AURA/main/favicon.png" alt="AURA logo" width="112" />
+  <a href="https://itsaura.ai.studio/app/">
+    <img src="https://raw.githubusercontent.com/ar0x1/AURA/main/favicon.png" alt="AURA logo" width="104" />
   </a>
 
-  <h1>AURA</h1>
-  <p><strong>Your personal AI companion, brought to life with Live2D.</strong></p>
-  <p>Real-time conversations · Expressive characters · Natural voice · Personalization</p>
+  <h1>A U R A</h1>
+  <p><strong>AN AI COMPANION THAT DOESN'T JUST RESPOND — IT COMES ALIVE.</strong></p>
+  <p><code>VOICE // MEMORY // PERSONALITY // LIVE2D</code></p>
 
-  <p>
-    <a href="https://itsaura.ai.studio/app/">
-      <img src="https://img.shields.io/badge/LAUNCH-AURA%20APP-8B5CF6?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Launch AURA" />
-    </a>
-    <a href="https://itsaura.ai.studio/">
-      <img src="https://img.shields.io/badge/VISIT-WEBSITE-0EA5E9?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Visit website" />
-    </a>
-    <a href="https://github.com/ar0x1/AURA">
-      <img src="https://img.shields.io/badge/VIEW-SOURCE-24292F?style=for-the-badge&logo=github&logoColor=white" alt="View source" />
-    </a>
-    <a href="https://github.com/ar0x1/AURA/issues">
-      <img src="https://img.shields.io/badge/REPORT-ISSUE-EF4444?style=for-the-badge&logo=github&logoColor=white" alt="Report an issue" />
-    </a>
-  </p>
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=14&duration=2600&pause=850&color=9B7BFF&center=true&vCenter=true&width=680&lines=Meet+your+companion.+Give+it+a+voice.;Expressive+Live2D.+Natural+conversations.;Built+by+ar0x.+Made+to+feel+alive." alt="AURA animated tagline" />
 
-  <p>
-    <img src="https://img.shields.io/github/stars/ar0x1/AURA?style=flat-square&logo=github&label=Stars" alt="GitHub stars" />
-    <img src="https://img.shields.io/github/forks/ar0x1/AURA?style=flat-square&logo=github&label=Forks" alt="GitHub forks" />
-    <img src="https://img.shields.io/github/license/ar0x1/AURA?style=flat-square&label=License" alt="License" />
-    <img src="https://img.shields.io/badge/Runtime-Node.js%2020%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 20 or newer" />
-  </p>
+  <br />
+  <a href="https://itsaura.ai.studio/app/"><img src="https://img.shields.io/badge/LAUNCH%20AURA-8B5CF6?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Launch AURA" /></a>
+  <a href="https://itsaura.ai.studio/"><img src="https://img.shields.io/badge/WEBSITE-18181B?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="AURA website" /></a>
+  <a href="https://github.com/ar0x1/AURA"><img src="https://img.shields.io/badge/SOURCE-18181B?style=for-the-badge&logo=github&logoColor=white" alt="Source code" /></a>
 
+  <br /><br />
+  <img src="https://img.shields.io/github/stars/ar0x1/AURA?style=flat-square&color=8B5CF6&label=STARS" alt="GitHub stars" />
+  <img src="https://img.shields.io/github/forks/ar0x1/AURA?style=flat-square&color=8B5CF6&label=FORKS" alt="GitHub forks" />
+  <img src="https://img.shields.io/github/license/ar0x1/AURA?style=flat-square&color=8B5CF6&label=LICENSE" alt="License" />
+  <img src="https://img.shields.io/badge/NODE-20%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 20 or newer" />
+
+  <br /><br />
   <a href="https://itsaura.ai.studio/">
-    <img src="https://raw.githubusercontent.com/ar0x1/AURA/main/assets/AURA.png" alt="AURA application preview" width="520" />
+    <img src="https://raw.githubusercontent.com/ar0x1/AURA/main/assets/AURA.png" alt="AURA application preview" width="760" />
   </a>
+
+  <sub>AN ar0x PROJECT · OPEN SOURCE · MIT-0</sub>
 </div>
 
 ---
 
-## Overview
+## `01` — The idea
 
-**AURA** is a free, open-source, browser-based AI companion designed to make conversations feel more alive. It combines configurable AI responses with animated **Live2D characters**, expressive text-to-speech, conversation memory, and a customizable interface.
+**AURA by ar0x** brings an AI companion out of the chat box and onto your screen.
 
-Run it locally with a lightweight Node.js server, connect your preferred AI provider, choose a character, and make the experience your own.
+Talk in real time, give your companion a distinct personality, and watch an expressive **Live2D character** react with voice, emotions, and motion. AURA combines configurable AI models, conversation context, and speech into one customizable browser experience.
 
-## Features
+> Not just another chat window. A character with a voice, expressions, and a place on your screen.
 
-### AI conversation
-- **OpenRouter integration** with a configurable primary model and up to two model fallbacks.
-- **Streaming responses** for a more responsive chat experience.
-- **Server-side fallback:** the Express server can use NVIDIA Nemotron, then Gemini when configured, before falling back to a local response.
-- **Custom personas:** shape a companion's personality and behavior with editable prompts.
-- **Conversation context:** configurable memory depth and rolling conversation summaries.
-- **Context awareness:** optionally include information such as the current time and device battery status.
+## `02` — What makes AURA different
 
-### Live2D characters
-- **Live2D Cubism rendering** powered by PIXI.js and `pixi-live2d-display`.
-- **Character gallery** for browsing and switching between available models.
-- **Custom model loading** using a Live2D `.model3.json` URL.
-- **Multiple model support** when enabled.
-- **Interactive character controls:** drag, reposition, and zoom models.
-- **Animated expressions and idle motion**, including emotion-linked facial changes and particle effects.
+<table>
+  <tr>
+    <td width="50%">
+      <h3>◈ AI conversations</h3>
+      Streaming chat through OpenRouter, configurable model fallbacks, custom personas, and rolling conversation summaries.
+    </td>
+    <td width="50%">
+      <h3>◈ Live2D presence</h3>
+      Animated Cubism characters, a model gallery, custom model URLs, idle motion, and emotion-linked expressions.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>◈ Voice & lip-sync</h3>
+      Fish Audio speech generation, natural sentence chunks, audio preloading, and audio-reactive mouth movement.
+    </td>
+    <td width="50%">
+      <h3>◈ Your own space</h3>
+      Custom backgrounds, adjustable panels, language options, ambient chat, message queues, and detailed debug tools.
+    </td>
+  </tr>
+</table>
 
-### Voice and audio
-- **AURA TTS:** Fish Audio integration through the local server's protected API proxy.
-- **Expressive speech playback** with sentence chunking and audio preloading.
-- **Live2D lip-sync** driven by audio frequency analysis.
-- **Voice controls** for enabling speech and adjusting playback volume.
+### More under the hood
 
-### Personalization and controls
-- Customizable backgrounds and a background library.
-- Adjustable chat layout, panel opacity, and display preferences.
-- Multi-language interface and response-language options.
-- Optional ambient conversation and message queue features.
-- Debug panel with categorized application logs.
-- Guided in-app tutorial for getting familiar with the controls.
+- **Make it yours:** customize the companion's identity, personality, and response behavior.
+- **Bring your own model:** choose from the character gallery or load a Live2D `.model3.json` URL.
+- **Keep the conversation flowing:** configurable context depth and rolling summaries help preserve useful context.
+- **Tune the experience:** move and resize panels, adjust opacity, change backgrounds, and personalize the interface.
+- **Stay in control:** optional ambient conversation, voice controls, message queue, and categorized debug logs.
 
-## Quick Start
+## `03` — Get started
 
 ### Requirements
 
-- **Node.js 20 or newer** and npm.
-- A modern browser such as Chrome, Firefox, or Edge.
-- An internet connection for external AI, voice, and model assets.
+- Node.js **20 or newer** and npm
+- A modern browser
+- Internet access for configured AI providers, voice generation, and remote model assets
 
-### 1. Clone the repository
+### Install
 
 ```bash
 git clone https://github.com/ar0x1/AURA.git
 cd AURA
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### Configure providers
 
-Create a `.env` file in the project root:
-
-```bash
-touch .env
-```
-
-Add the provider keys you intend to use:
+Create a `.env` file in the project root. Add only the keys for the services you plan to use:
 
 ```env
-# Server-side AI provider (optional, but recommended for the server fallback)
+# Optional server-side chat fallback
 NVIDIA_API_KEY=your_nvidia_api_key
-
-# Optional NVIDIA endpoint/model overrides
-# NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1
-# NVIDIA_MODEL=nvidia/nemotron-3.5-lightning-30b-a3b
-
-# Optional Gemini fallback for the server-side chat route
 GEMINI_API_KEY=your_gemini_api_key
 
-# Fish Audio key enables server-proxied AURA voice generation
+# Required for Fish Audio voice generation
 FISH_AUDIO_API_KEY=your_fish_audio_api_key
 
-# Optional Fish Audio model/reference overrides
+# Optional overrides
+# NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1
+# NVIDIA_MODEL=nvidia/nemotron-3.5-lightning-30b-a3b
 # FISH_AUDIO_MODEL=s2.1-pro-free
 # FISH_AUDIO_REFERENCE_ID=your_reference_id
 ```
 
-> **Security:** Never commit your `.env` file or paste API keys into a public issue. Make sure `.env` is listed in your `.gitignore` before committing changes.
+The browser-side OpenRouter integration uses its own API-key and model settings in the app. It supports a primary model and up to two fallback models.
 
-**Provider notes**
+> **Keep your keys private.** Never commit `.env` or post API keys in issues, screenshots, or logs.
 
-- The app's OpenRouter integration reads its API key and model preferences from browser storage. It supports a primary model and up to two fallback models.
-- `NVIDIA_API_KEY` enables the server-side NVIDIA chat fallback. The current default model is `nvidia/nemotron-3.5-lightning-30b-a3b`.
-- `GEMINI_API_KEY` is optional and is used as a secondary server-side fallback when the NVIDIA request is unavailable.
-- `FISH_AUDIO_API_KEY` is required for the server's Fish Audio TTS endpoint. Without it, Fish Audio requests return an API-key configuration error.
-
-### 4. Start AURA
-
-Development mode:
+### Run AURA
 
 ```bash
+# Development
 npm run dev
-```
 
-Or start the server normally:
-
-```bash
+# Or start normally
 npm start
 ```
 
-### 5. Open the app
+Open the app at **http://localhost:3000**.
 
-- Landing page: <http://localhost:3000>
-- AURA app: <http://localhost:3000/app/>
-- Server health check: <http://localhost:3000/api/health>
-
-The server currently listens on port **3000**.
-
-## Using AURA
-
-1. Open the app using the local URL or the **Launch AURA App** button above.
-2. Open **Settings** to explore character, voice, language, and display preferences.
-3. Open **Models & Visuals → Character Gallery** to browse available Live2D characters.
-4. Choose **Voice & Audio** to enable speech and adjust the voice volume.
-5. Customize the companion persona and conversation preferences, then start chatting.
-6. Open the debug panel when troubleshooting AI, audio, or model-loading issues.
-
-## AI and Voice Architecture
-
-AURA uses two related paths:
-
-| Component | Provider / behavior | Configuration |
-|---|---|---|
-| Main browser chat | OpenRouter, with a primary model and up to two model fallbacks | OpenRouter key and model preferences are stored in browser storage |
-| Server chat fallback | NVIDIA Nemotron, then Gemini if configured, then a local response | `NVIDIA_API_KEY`, optional `NVIDIA_MODEL`, `NVIDIA_BASE_URL`, and `GEMINI_API_KEY` |
-| Voice generation | Fish Audio through the Express server proxy | `FISH_AUDIO_API_KEY`, optional `FISH_AUDIO_MODEL` and `FISH_AUDIO_REFERENCE_ID` |
-| Character animation | Live2D Cubism rendered with PIXI.js | Select a model in the Character Gallery or provide a custom model URL |
-
-The server exposes a health endpoint at `/api/health`, chat endpoints at `/api/chat` and `/api/chat/stream`, and Fish Audio endpoints at `/api/tts`, `/api/tts/fish`, and `/api/tts/stream`.
-
-## Development Commands
-
-| Command | Description |
+| Local route | Purpose |
 |---|---|
-| `npm run dev` | Start the Express server for development |
-| `npm start` | Start the Express server |
-| `npm test` | Run the Node.js test suite |
+| `/` | Landing page |
+| `/app/` | AURA companion |
+| `/api/health` | Server health check |
+
+## `04` — Make it yours
+
+1. Launch AURA and open **Settings**.
+2. Choose a character in **Models & Visuals → Character Gallery**.
+3. Configure your AI provider, model, and companion persona.
+4. Enable speech in **Voice & Audio** and adjust the volume.
+5. Personalize the background and layout, then start a conversation.
+
+For a custom Live2D character, provide a reachable `.model3.json` URL with its referenced assets available.
+
+## `05` — How the pieces connect
+
+| Layer | Technology | Role |
+|---|---|---|
+| Browser chat | OpenRouter | Configurable AI models and streaming responses |
+| Server fallback | NVIDIA Nemotron · Gemini | Optional fallback response path |
+| Voice | Fish Audio | Server-proxied speech generation |
+| Character runtime | Live2D Cubism · PIXI.js | Character rendering, expressions, and motion |
+| Server | Node.js · Express | Local app server and API routes |
+
+The server exposes `/api/chat`, `/api/chat/stream`, `/api/tts`, `/api/tts/fish`, `/api/tts/stream`, and `/api/health`.
+
+## `06` — Developer commands
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm start` | Start AURA normally |
+| `npm test` | Run the test suite |
 | `npm run lint` | Run the server JavaScript syntax check |
 
-## Project Structure
+### Project layout
 
 ```text
 AURA/
-├── app/          # Browser application, scripts, and styles
-├── assets/       # Application artwork and visual assets
+├── app/          # Browser app, scripts, and styles
+├── assets/       # Artwork and visual assets
 ├── test/         # Automated tests
 ├── server.js     # Express server and API routes
 ├── index.html    # Landing page
-├── package.json  # Dependencies and npm scripts
-├── favicon.png   # Repository/application icon
-├── favicon.ico
+├── package.json  # Dependencies and scripts
 └── LICENSE       # MIT-0 license
 ```
 
-## Tech Stack
+## `07` — Contribute
 
-- **JavaScript (ES modules)** — application and server logic.
-- **Node.js + Express** — local web server and API endpoints.
-- **Live2D Cubism SDK** — character rendering and animation.
-- **PIXI.js + pixi-live2d-display** — 2D rendering layer for Live2D models.
-- **OpenRouter** — configurable browser-side LLM integration.
-- **NVIDIA Nemotron + Google Gemini** — optional server-side chat and fallback providers.
-- **Fish Audio** — voice synthesis integration.
-- **Day.js** — date and time utilities.
+Ideas, bug reports, and pull requests are welcome.
 
-## Troubleshooting
+- [Report a bug or request a feature](https://github.com/ar0x1/AURA/issues)
+- [Explore the source](https://github.com/ar0x1/AURA)
 
-### The page does not load
+When reporting an issue, include reproduction steps and relevant error messages. **Remove API keys and other secrets first.**
 
-Make sure the server is running and open `http://localhost:3000`. Do not open the HTML files directly with `file://`; use the Node server so API requests and browser security rules work correctly.
+## `08` — License
 
-### Chat uses a fallback response
-
-Check that your OpenRouter configuration is valid. For the server-side fallback, verify `NVIDIA_API_KEY` and, optionally, `GEMINI_API_KEY` in `.env`, then restart the server.
-
-### AURA voice is unavailable
-
-Check that `FISH_AUDIO_API_KEY` is present in the server environment and restart AURA. You can inspect the TTS configuration status at `http://localhost:3000/api/tts/status`.
-
-### A Live2D model does not appear
-
-Check the browser console and the AURA debug panel. For a custom model, confirm that the `.model3.json` file and all referenced textures, motions, and other model assets are reachable.
-
-## Contributing
-
-Issues and pull requests are welcome. Before opening an issue, include the steps to reproduce the problem and any relevant browser-console or AURA debug messages. **Do not include API keys, tokens, or other secrets.**
-
-- [Open an issue](https://github.com/ar0x1/AURA/issues)
-- [Browse the source code](https://github.com/ar0x1/AURA)
-
-## License
-
-AURA is released under the **MIT No Attribution (MIT-0)** license. See [`LICENSE`](LICENSE) for the full license text.
+AURA is released under the **MIT No Attribution (MIT-0)** license. See [`LICENSE`](LICENSE) for the full terms.
 
 ---
 
 <div align="center">
-  <p>Built with care by <a href="https://github.com/ar0x1">ar0x</a>.</p>
-  <p><a href="https://itsaura.ai.studio/app/">Launch AURA</a> · <a href="https://github.com/ar0x1/AURA">GitHub</a> · <a href="https://github.com/ar0x1/AURA/issues">Issues</a></p>
+  <h3>GIVE YOUR SCREEN A LITTLE MORE LIFE.</h3>
+  <p><strong>AURA</strong> — crafted by <a href="https://github.com/ar0x1">ar0x</a>.</p>
+  <a href="https://itsaura.ai.studio/app/">LAUNCH AURA</a> &nbsp;·&nbsp;
+  <a href="https://itsaura.ai.studio/">WEBSITE</a> &nbsp;·&nbsp;
+  <a href="https://github.com/ar0x1/AURA">SOURCE</a>
 </div>
